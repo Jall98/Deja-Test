@@ -1,0 +1,76 @@
+/* App.css */
+
+/* Root colors based on Sierra Leone flag */
+:root {
+     --primary-color: #1eb53a; /* Green */
+     --secondary-color: #ffffff; /* White */
+     --accent-color: #0072c6; /* Blue */
+     --text-color: #333;
+   }
+   
+   /* Global styling */
+   body {
+     margin: 0;
+     font-family: Arial, sans-serif;
+     background: var(--secondary-color);
+   }
+   
+   /* Centered container */
+   .container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     text-align: center;
+   }
+   
+   /* Welcome header */
+   .welcome-header {
+     color: var(--primary-color);
+     font-size: 24px;
+     font-weight: bold;
+   }
+   
+   /* Auth form styling */
+   .auth-form {
+     background-color: var(--accent-color);
+     padding: 20px;
+     border-radius: 8px;
+     color: white;
+     width: 300px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   }
+   
+   .auth-form h2 {
+     font-size: 20px;
+     margin-bottom: 15px;
+   }
+   
+   .auth-form input {
+     width: 100%;
+     padding: 10px;
+     margin: 10px 0;
+     border-radius: 4px;
+     border: 1px solid #ddd;
+   }
+   
+   .auth-form button {
+     width: 100%;
+     padding: 10px;
+     background-color: var(--primary-color);
+     border: none;
+     color: white;
+     font-weight: bold;
+     cursor: pointer;
+     border-radius: 4px;
+   }
+   
+   .auth-form button:hover {
+     background-color: #14a028;
+   }
+   
+   /* Footer link styling */
+   .footer-link {
+     color: var(--secondary-color);
+   }
+   
