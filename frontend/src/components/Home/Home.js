@@ -62,7 +62,7 @@ const Home = ({ onNavigate }) => {
       label: 'Verify Property',
       icon: '🔍',
       action: () => onNavigate('land-verification'),
-      bgColor: 'bg-blue-600',
+      bgColor: 'bg-emerald-600',
     },
     {
       label: 'Book Appointment',
@@ -74,25 +74,25 @@ const Home = ({ onNavigate }) => {
       label: 'Track Application',
       icon: '📋',
       action: () => onNavigate('track-application'),
-      bgColor: 'bg-blue-600',
+      bgColor: 'bg-teal-600',
     },
     {
       label: 'Download Forms',
       icon: '📄',
       action: () => onNavigate('download-forms'),
-      bgColor: 'bg-blue-600',
+      bgColor: 'bg-cyan-600',
     },
     {
       label: 'My Properties',
       icon: '🏠',
       action: () => onNavigate('my-properties'),
-      bgColor: 'bg-blue-600',
+      bgColor: 'bg-indigo-600',
     },
     {
       label: 'Search Properties',
       icon: '🔎',
       action: () => onNavigate('search-properties'),
-      bgColor: 'bg-blue-600',
+      bgColor: 'bg-purple-600',
     },
   ];
 
@@ -162,7 +162,7 @@ const Home = ({ onNavigate }) => {
       <div className="relative h-[600px]">
         <div className="absolute inset-0">
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 opacity-80"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 opacity-75"></div>
           {/* Background Image */}
           <div
             className="absolute inset-0 w-full h-full bg-cover bg-center"
@@ -174,9 +174,13 @@ const Home = ({ onNavigate }) => {
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <div className="text-center px-4">
             <h1 className="text-5xl font-bold mb-6 text-white drop-shadow-lg">
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Sierra Leone</span>{' '}
+              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Sierra Leone
+              </span>{' '}
               <span className="text-white">Digital</span>{' '}
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Land Registry</span>
+              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Land Registry
+              </span>
             </h1>
             <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto drop-shadow-lg">
               Streamlining land registration and management across Sierra Leone.
@@ -201,7 +205,7 @@ const Home = ({ onNavigate }) => {
       {/* Services Section */}
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
             Our Services
           </h2>
           <p className="mt-4 text-gray-600">
@@ -217,7 +221,7 @@ const Home = ({ onNavigate }) => {
             >
               <div className="p-8">
                 <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold mb-2 text-blue-700">{feature.title}</h3>
+                <h3 className="text-xl font-bold mb-2 text-emerald-700">{feature.title}</h3>
                 <p className="text-gray-600 mb-4">{feature.description}</p>
                 <ul className="space-y-2 mb-6">
                   {feature.benefits.map((benefit, index) => (
@@ -226,7 +230,7 @@ const Home = ({ onNavigate }) => {
                       className="flex items-center text-gray-600"
                     >
                       <svg
-                        className="w-4 h-4 mr-2 text-blue-500"
+                        className="w-4 h-4 mr-2 text-emerald-500"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -244,7 +248,7 @@ const Home = ({ onNavigate }) => {
                 </ul>
                 <button
                   onClick={feature.action}
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
+                  className="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-colors duration-300"
                 >
                   Learn More
                 </button>
@@ -257,19 +261,19 @@ const Home = ({ onNavigate }) => {
       {/* Sign-Up Popup */}
       {showPopup && (
         <div className="fixed bottom-24 left-0 right-0 flex justify-center z-50">
-          <div className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 p-0.5 rounded-full shadow-lg max-w-3xl w-full mx-4">
+          <div className="bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 p-0.5 rounded-full shadow-lg max-w-3xl w-full mx-4">
             <div className="bg-white rounded-full px-6 py-4 flex items-center">
               <p className="flex-grow text-gray-800">
-                <strong className="text-blue-700">Stay Updated!</strong> Subscribe for the latest updates.
+                <strong className="text-emerald-700">Stay Updated!</strong> Subscribe for the latest updates.
               </p>
               <input
                 type="email"
                 placeholder="Your email address"
-                className="px-4 py-2 border rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent mr-4 w-1/2"
+                className="px-4 py-2 border rounded-full focus:ring-2 focus:ring-emerald-500 focus:border-transparent mr-4 w-1/2"
               />
               <button
                 onClick={() => setShowPopup(false)}
-                className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
+                className="bg-emerald-600 text-white px-6 py-2 rounded-full hover:bg-emerald-700 transition-colors duration-300 transform hover:scale-105"
               >
                 Subscribe
               </button>
@@ -288,7 +292,7 @@ const Home = ({ onNavigate }) => {
       {/* Regional Overview */}
       <div className="bg-gradient-to-br from-white to-blue-50 py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
             Explore Regions
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -303,11 +307,11 @@ const Home = ({ onNavigate }) => {
                   alt={`${region.name} Image`}
                 ></div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-blue-700">{region.name}</h3>
+                  <h3 className="text-xl font-bold mb-2 text-emerald-700">{region.name}</h3>
                   <p className="text-gray-600 mb-3">{region.description}</p>
                   <div className="flex justify-between text-gray-600">
                     <span>Properties: {region.properties}</span>
-                    <span className="text-blue-600 font-semibold">{region.trend}</span>
+                    <span className="text-emerald-600 font-semibold">{region.trend}</span>
                   </div>
                 </div>
               </div>
@@ -321,7 +325,7 @@ const Home = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Property Value Trends */}
           <div className="bg-white/90 backdrop-blur rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="text-xl font-bold mb-6 text-blue-700">Property Value Trends</h3>
+            <h3 className="text-xl font-bold mb-6 text-emerald-700">Property Value Trends</h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={propertyTrends}>
@@ -332,8 +336,8 @@ const Home = ({ onNavigate }) => {
                   <Bar dataKey="value" fill="url(#colorGradient)" />
                   <defs>
                     <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#1D4ED8" />
-                      <stop offset="100%" stopColor="#3B82F6" />
+                      <stop offset="0%" stopColor="#059669" />
+                      <stop offset="100%" stopColor="#10B981" />
                     </linearGradient>
                   </defs>
                 </BarChart>
@@ -343,14 +347,14 @@ const Home = ({ onNavigate }) => {
 
           {/* News Section */}
           <div>
-            <h3 className="text-xl font-bold mb-6 text-blue-700">Latest Updates</h3>
+            <h3 className="text-xl font-bold mb-6 text-emerald-700">Latest Updates</h3>
             <div className="space-y-4">
               {news.map((item) => (
                 <div
                   key={item.title}
                   className="bg-white/90 backdrop-blur rounded-lg p-4 shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
-                  <span className="text-sm text-blue-600 font-medium">
+                  <span className="text-sm text-emerald-600 font-medium">
                     {item.category}
                   </span>
                   <h4 className="font-bold mt-1 text-gray-800">{item.title}</h4>
