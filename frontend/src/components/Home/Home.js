@@ -1,104 +1,389 @@
-import React, { useState } from 'react';
-import './Home.css';
+import React, { useState, useEffect } from 'react';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts';
 
-const Home = () => {
+const Home = ({ onNavigate }) => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    // Show the sign-up popup when the component mounts
+    setShowPopup(true);
+  }, []);
+
   const mainFeatures = [
     {
-      title: "Land Registration",
-      description: "Complete digital land registration process",
-      icon: "📋",
-      steps: [
-        "Property details submission",
-        "Document upload",
-        "Payment processing",
-        "Status tracking",
-        "Certificate generation"
-      ]
+      title: 'Land Registration',
+      description: 'Register your land securely through our digital platform',
+      icon: '📋',
+      action: () => onNavigate('land-registration'),
+      benefits: [
+        'Official documentation',
+        'Digital record keeping',
+        'Secure verification',
+        '24/7 access',
+      ],
     },
     {
-      title: "Land Transfer",
-      description: "Seamless property transfer process",
-      icon: "🔄",
-      steps: [
-        "Seller initiation",
-        "Buyer verification",
-        "Document verification",
-        "Transfer processing",
-        "Ownership update"
-      ]
+      title: 'Land Transfer',
+      description: 'Transfer land ownership seamlessly and securely',
+      icon: '🔄',
+      action: () => onNavigate('land-transfer'),
+      benefits: [
+        'Legal documentation',
+        'Ownership verification',
+        'Transfer processing',
+        'Digital records',
+      ],
     },
     {
-      title: "Search & Verification",
-      description: "Verify land ownership and documentation",
-      icon: "🔍",
-      steps: [
-        "Property search",
-        "Owner verification",
-        "Document verification",
-        "History check",
-        "Status report"
-      ]
-    }
+      title: 'Land Verification',
+      description: 'Verify land ownership and documentation instantly',
+      icon: '✅',
+      action: () => onNavigate('land-verification'),
+      benefits: [
+        'Instant verification',
+        'OARG records check',
+        'Survey validation',
+        'Legal confirmation',
+      ],
+    },
+  ];
+
+  const quickActions = [
+    {
+      label: 'Verify Property',
+      icon: '🔍',
+      action: () => onNavigate('land-verification'),
+    },
+    {
+      label: 'Book Appointment',
+      icon: '📅',
+      action: () => onNavigate('appointment-booking'),
+    },
+    {
+      label: 'Track Application',
+      icon: '📋',
+      action: () => onNavigate('track-application'),
+    },
+    {
+      label: 'Download Forms',
+      icon: '📄',
+      action: () => onNavigate('download-forms'),
+    },
+    {
+      label: 'My Properties',
+      icon: '🏠',
+      action: () => onNavigate('my-properties'),
+    },
+    {
+      label: 'Search Properties',
+      icon: '🔎',
+      action: () => onNavigate('search-properties'),
+    },
+  ];
+
+  const propertyTrends = [
+    { year: '2020', value: 100, growth: '+5%' },
+    { year: '2021', value: 125, growth: '+25%' },
+    { year: '2022', value: 158, growth: '+26%' },
+    { year: '2023', value: 180, growth: '+14%' },
+    { year: '2024', value: 210, growth: '+17%' },
+  ];
+
+  const regions = [
+    {
+      name: 'Western Area',
+      image: 'https://via.placeholder.com/400x300?text=Western+Area',
+      properties: '1,200+',
+      trend: '↑ 15%',
+    },
+    {
+      name: 'Northern Province',
+      image: 'https://via.placeholder.com/400x300?text=Northern+Province',
+      properties: '850+',
+      trend: '↑ 12%',
+    },
+    {
+      name: 'Southern Province',
+      image: 'https://via.placeholder.com/400x300?text=Southern+Province',
+      properties: '950+',
+      trend: '↑ 18%',
+    },
+  ];
+
+  const news = [
+    {
+      title: 'Government Launches Digital Land Registry',
+      date: 'October 2024',
+      category: 'Policy Update',
+      description: 'Modernizing land management across Sierra Leone',
+    },
+    {
+      title: 'Foreign Investment in Real Estate Grows',
+      date: 'October 2024',
+      category: 'Investment',
+      description: 'International investors showing increased interest',
+    },
+    {
+      title: 'New Protected Forest Areas Designated',
+      date: 'October 2024',
+      category: 'Conservation',
+      description: 'Sustainable land management initiatives',
+    },
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 space-y-12">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-green-600 via-white to-blue-600 rounded-2xl overflow-hidden">
-        <div className="p-8 md:p-12 bg-opacity-90 bg-white">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+      <div className="relative h-[600px]">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-green-800 via-green-600 to-green-800 opacity-90"></div>
+          {/* Replace the image with a gradient background */}
+          <div
+            className="absolute inset-0 w-full h-full bg-cover bg-center"
+            style={{
+              backgroundImage:
+                'url(https://via.placeholder.com/1920x600?text=Sierra+Leone+Landscape)',
+            }}
+          ></div>
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          <div className="text-center px-4">
+            <h1 className="text-5xl font-bold text-white mb-6 drop-shadow-lg">
               Sierra Leone Digital Land Registry
             </h1>
-            <p className="text-xl text-gray-700 mb-8">
-              Streamlined land registration, transfer, and verification processes
+            <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto drop-shadow-lg">
+              Streamlining land registration and management across Sierra Leone.
+              Secure, transparent, and efficient property services for all
+              citizens.
             </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Features */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {mainFeatures.map((feature, index) => (
-          <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div className="p-6">
-              <div className="flex justify-between items-start">
-                <div className="p-3 bg-gray-50 rounded-lg text-4xl">{feature.icon}</div>
-              </div>
-              <h3 className="text-2xl font-semibold mt-4 mb-2">{feature.title}</h3>
-              <p className="text-gray-600 mb-4">{feature.description}</p>
-              <ul className="space-y-2 mb-6">
-                {feature.steps.map((step, stepIndex) => (
-                  <li key={stepIndex} className="flex items-center text-sm text-gray-600">
-                    <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    {step}
-                  </li>
-                ))}
-              </ul>
-              <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
-                Get Started
-              </button>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              {quickActions.map((action) => (
+                <button
+                  key={action.label}
+                  onClick={action.action}
+                  className="bg-white/10 backdrop-blur-sm p-4 rounded-xl text-white hover:bg-white/20 transition-all duration-300 flex flex-col items-center"
+                >
+                  <span className="text-3xl mb-2">{action.icon}</span>
+                  <span className="text-sm font-medium">{action.label}</span>
+                </button>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-
-      {/* Status Tracking */}
-      <div className="bg-white rounded-xl shadow-lg p-8">
-        <h2 className="text-2xl font-bold mb-6">Track Your Application</h2>
-        <div className="flex gap-4">
-          <input
-            type="text"
-            placeholder="Enter your LS or Application Number"
-            className="flex-1 p-3 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-          />
-          <button className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-300">
-            Track Status
-          </button>
         </div>
       </div>
+
+      {/* Services Section */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900">Our Services</h2>
+          <p className="mt-4 text-gray-600">
+            Comprehensive land management solutions
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {mainFeatures.map((feature) => (
+            <div
+              key={feature.title}
+              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            >
+              <div className="p-8">
+                <div className="text-4xl mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                <p className="text-gray-600 mb-4">{feature.description}</p>
+                <ul className="space-y-2 mb-6">
+                  {feature.benefits.map((benefit, index) => (
+                    <li
+                      key={index}
+                      className="flex items-center text-gray-600"
+                    >
+                      <svg
+                        className="w-4 h-4 mr-2 text-green-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  onClick={feature.action}
+                  className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-300"
+                >
+                  Learn More
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Regional Overview */}
+      <div className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Explore Regions
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {regions.map((region) => (
+              <div
+                key={region.name}
+                className="bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              >
+                <div
+                  className="w-full h-48 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${region.image})` }}
+                ></div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2">{region.name}</h3>
+                  <div className="flex justify-between text-gray-600">
+                    <span>Available Properties: {region.properties}</span>
+                    <span className="text-green-600">{region.trend}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Market Trends & News */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Property Value Trends */}
+          <div className="bg-white rounded-xl p-6 shadow-lg">
+            <h3 className="text-xl font-bold mb-6">Property Value Trends</h3>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={propertyTrends}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="year" />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="value" fill="#16a34a" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+
+          {/* News Section */}
+          <div>
+            <h3 className="text-xl font-bold mb-6">Latest Updates</h3>
+            <div className="space-y-4">
+              {news.map((item) => (
+                <div
+                  key={item.title}
+                  className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow duration-300"
+                >
+                  <span className="text-sm text-green-600 font-medium">
+                    {item.category}
+                  </span>
+                  <h4 className="font-bold mt-1">{item.title}</h4>
+                  <p className="text-gray-600 text-sm mt-2">
+                    {item.description}
+                  </p>
+                  <p className="text-sm text-gray-500 mt-2">{item.date}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Investment Highlights */}
+      <div className="bg-green-600 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold">Why Invest in Sierra Leone</h2>
+            <p className="mt-4 text-green-100">
+              A peaceful nation with growing opportunities
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+              <div className="text-4xl mb-4">🕊️</div>
+              <h3 className="text-xl font-bold mb-2">Peaceful Nation</h3>
+              <p className="text-green-100">
+                Ranked among the most peaceful nations in West Africa
+              </p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+              <div className="text-4xl mb-4">📈</div>
+              <h3 className="text-xl font-bold mb-2">Growing Economy</h3>
+              <p className="text-green-100">
+                Steady economic growth with increasing foreign investment
+              </p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+              <div className="text-4xl mb-4">🌳</div>
+              <h3 className="text-xl font-bold mb-2">Rich Resources</h3>
+              <p className="text-green-100">
+                Abundant natural resources and fertile agricultural land
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Sign-Up Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white rounded-lg p-8 w-full max-w-md relative">
+            <button
+              className="absolute top-2 right-2 text-gray-700"
+              onClick={() => setShowPopup(false)}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <h3 className="text-2xl font-bold text-green-700 mb-4">
+              Sign Up for Latest Updates
+            </h3>
+            <p className="text-gray-700 mb-6">
+              Stay informed about our latest services and offers. Enter your
+              email to subscribe to our newsletter.
+            </p>
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="w-full px-4 py-3 mb-4 border rounded-lg focus:ring-2 focus:ring-green-700 focus:border-transparent"
+            />
+            <button
+              onClick={() => setShowPopup(false)}
+              className="w-full bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-colors duration-300"
+            >
+              Subscribe
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

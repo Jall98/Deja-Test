@@ -46,6 +46,26 @@ const Dashboard = () => {
         return 'text-yellow-600';
     }
   };
+  
+  const documentProcessStatus = [
+     { stage: 'Document Assessment', completed: 45, pending: 12, rejected: 3 },
+     { stage: 'Bank Payment', completed: 40, pending: 15, rejected: 5 },
+     { stage: 'NRA Payment', completed: 38, pending: 18, rejected: 4 },
+     { stage: 'OARG Validation', completed: 35, pending: 20, rejected: 5 },
+     { stage: 'Final Submission', completed: 32, pending: 22, rejected: 6 }
+   ];
+ 
+   const blockchainMetrics = [
+     { name: 'Transaction Speed', value: 95, total: 100 },
+     { name: 'Security Score', value: 98, total: 100 },
+     { name: 'User Accessibility', value: 92, total: 100 }
+   ];
+ 
+   const COLORS = ['#16a34a', '#eab308', '#dc2626'];
+ 
+   return (
+     <div className="max-w-7xl mx-auto p-4 space-y-6">
+       {/* Original header and stats sections... */}
 
   return (
     <div className="max-w-7xl mx-auto p-4 space-y-6">
@@ -153,6 +173,98 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      {/* Process Tracking */}
+      <div className="card p-6">
+        <h2 className="text-xl font-bold mb-6">Document Processing Pipeline</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+          {documentProcessStatus.map((stage, index) => (
+            <div key={index} className="bg-gray-50 rounded-lg p-4">
+              <h3 className="font-medium text-sm mb-3">{stage.stage}</h3>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-green-600">Completed</span>
+                  <span className="font-medium">{stage.completed}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-yellow-600">Pending</span>
+                  <span className="font-medium">{stage.pending}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-red-600">Rejected</span>
+                  <span className="font-medium">{stage.rejected}</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                  <div
+                    className="bg-green-600 h-2 rounded-full"
+                    style={{ width: `${(stage.completed / (stage.completed + stage.pending + stage.rejected)) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Blockchain Metrics */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="card p-6">
+          <h2 className="text-xl font-bold mb-4">System Performance</h2>
+          <div className="h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={blockchainMetrics}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="value" fill="#16a34a" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        <div className="card p-6">
+          <h2 className="text-xl font-bold mb-4">Process Distribution</h2>
+          <div className="h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={documentProcessStatus}
+                  dataKey="completed"
+                  nameKey="stage"
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={80}
+                  label
+                >
+                  {documentProcessStatus.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
+      {/* Quick Actions */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {[
+          { label: 'Submit Document', icon: '📄' },
+          { label: 'Track Payment', icon: '💳' },
+          { label: 'View Validations', icon: '✓' },
+          { label: 'Generate Report', icon: '📊' }
+        ].map((action, index) => (
+          <button
+            key={index}
+            className="p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow flex items-center justify-center space-x-2"
+          >
+            <span>{action.icon}</span>
+            <span>{action.label}</span>
+          </button>
+        ))}
+      </div>
+
 
       {/* Recent Activity */}
       <div className="card">
