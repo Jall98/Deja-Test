@@ -1,5 +1,6 @@
 // frontend/src/App.js
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
@@ -10,42 +11,31 @@ import LandVerification from './components/Land/LandVerification';
 import AppointmentBooking from './components/Services/AppointmentBooking';
 import Header from './components/Common/Header';
 import Footer from './components/Common/Footer';
-import './styles/App.css';
+import './styles/app.css';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-
-  const renderContent = () => {
-    switch (currentPage) {
-      case 'home':
-        return <Home />;
-      case 'login':
-        return <Login />;
-      case 'register':
-        return <Register />;
-      case 'dashboard':
-        return <Dashboard />;
-      case 'services':
-        return <ExploreServices />;
-      case 'land-registration':
-        return <LandRegistration />;
-      case 'land-verification':
-        return <LandVerification />;
-      case 'appointment-booking':
-        return <AppointmentBooking />;
-      default:
-        return <Home />;
-    }
-  };
-
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header onChangePage={setCurrentPage} />
-      <main className="flex-grow">
-        {renderContent()}
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-grow">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/services" component={ExploreServices} />
+            <Route path="/land-registration" component={LandRegistration} />
+            <Route path="/land-verification" component={LandVerification} />
+            <Route path="/appointment-booking" component={AppointmentBooking} />
+            {/* Add more routes as needed */}
+            {/* Optional: Add a 404 Not Found route */}
+            <Route path="*" component={() => <div className="p-4 text-center">404 Not Found</div>} />
+          </Switch>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
