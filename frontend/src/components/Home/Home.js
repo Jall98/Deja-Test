@@ -1,3 +1,4 @@
+// Home.js
 import React, { useState, useEffect } from 'react';
 import {
   BarChart,
@@ -140,12 +141,13 @@ const Home = ({ onNavigate }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 relative">
       {/* Hero Section */}
       <div className="relative h-[600px]">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-green-800 via-green-600 to-green-800 opacity-90"></div>
-          {/* Replace the image with a gradient background */}
+          {/* Adjusted Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-green-900 via-green-800 to-blue-900 opacity-80"></div>
+          {/* Background Image */}
           <div
             className="absolute inset-0 w-full h-full bg-cover bg-center"
             style={{
@@ -157,7 +159,9 @@ const Home = ({ onNavigate }) => {
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <div className="text-center px-4">
             <h1 className="text-5xl font-bold text-white mb-6 drop-shadow-lg">
-              Sierra Leone Digital Land Registry
+              <span style={{ color: '#00A859' }}>Sierra Leone</span>{' '}
+              <span style={{ color: '#FFFFFF' }}>Digital</span>{' '}
+              <span style={{ color: '#003399' }}>Land Registry</span>
             </h1>
             <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto drop-shadow-lg">
               Streamlining land registration and management across Sierra Leone.
@@ -169,7 +173,7 @@ const Home = ({ onNavigate }) => {
                 <button
                   key={action.label}
                   onClick={action.action}
-                  className="bg-white/10 backdrop-blur-sm p-4 rounded-xl text-white hover:bg-white/20 transition-all duration-300 flex flex-col items-center"
+                  className="bg-white/20 backdrop-blur-sm p-4 rounded-xl text-white hover:bg-white/30 transition-all duration-300 flex flex-col items-center"
                 >
                   <span className="text-3xl mb-2">{action.icon}</span>
                   <span className="text-sm font-medium">{action.label}</span>
@@ -233,6 +237,34 @@ const Home = ({ onNavigate }) => {
           ))}
         </div>
       </div>
+
+      {/* Sign-Up Popup */}
+      {showPopup && (
+        <div className="fixed bottom-0 left-0 right-0 mb-8 flex justify-center z-50">
+          <div className="bg-white rounded-full px-6 py-4 shadow-lg flex items-center max-w-3xl w-full mx-4">
+            <p className="flex-grow text-gray-800">
+              <strong>Stay Updated!</strong> Subscribe for the latest updates.
+            </p>
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="px-4 py-2 border rounded-full focus:ring-2 focus:ring-green-700 focus:border-transparent mr-4 w-1/2"
+            />
+            <button
+              onClick={() => setShowPopup(false)}
+              className="bg-green-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition-colors duration-300"
+            >
+              Subscribe
+            </button>
+            <button
+              className="text-gray-500 ml-4"
+              onClick={() => setShowPopup(false)}
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Regional Overview */}
       <div className="bg-white py-16">
@@ -307,83 +339,39 @@ const Home = ({ onNavigate }) => {
       </div>
 
       {/* Investment Highlights */}
-      <div className="bg-green-600 text-white py-16">
+      <div className="bg-blue-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold">Why Invest in Sierra Leone</h2>
-            <p className="mt-4 text-green-100">
+            <p className="mt-4 text-blue-100">
               A peaceful nation with growing opportunities
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6">
               <div className="text-4xl mb-4">🕊️</div>
               <h3 className="text-xl font-bold mb-2">Peaceful Nation</h3>
-              <p className="text-green-100">
+              <p className="text-blue-100">
                 Ranked among the most peaceful nations in West Africa
               </p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6">
               <div className="text-4xl mb-4">📈</div>
               <h3 className="text-xl font-bold mb-2">Growing Economy</h3>
-              <p className="text-green-100">
+              <p className="text-blue-100">
                 Steady economic growth with increasing foreign investment
               </p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6">
               <div className="text-4xl mb-4">🌳</div>
               <h3 className="text-xl font-bold mb-2">Rich Resources</h3>
-              <p className="text-green-100">
+              <p className="text-blue-100">
                 Abundant natural resources and fertile agricultural land
               </p>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Sign-Up Popup */}
-      {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white rounded-lg p-8 w-full max-w-md relative">
-            <button
-              className="absolute top-2 right-2 text-gray-700"
-              onClick={() => setShowPopup(false)}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            <h3 className="text-2xl font-bold text-green-700 mb-4">
-              Sign Up for Latest Updates
-            </h3>
-            <p className="text-gray-700 mb-6">
-              Stay informed about our latest services and offers. Enter your
-              email to subscribe to our newsletter.
-            </p>
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="w-full px-4 py-3 mb-4 border rounded-lg focus:ring-2 focus:ring-green-700 focus:border-transparent"
-            />
-            <button
-              onClick={() => setShowPopup(false)}
-              className="w-full bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-colors duration-300"
-            >
-              Subscribe
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
