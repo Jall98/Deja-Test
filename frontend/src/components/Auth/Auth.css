@@ -1,0 +1,73 @@
+/* Base styling for the container to center elements */
+.auth-container {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 100vh;
+     background-color: #f3f4f6; /* Light background color */
+     font-family: Arial, sans-serif;
+   }
+   
+   /* Card styling for the form */
+   .auth-card {
+     background-color: white;
+     padding: 2em;
+     border-radius: 10px;
+     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+     width: 350px;
+     text-align: center;
+   }
+   
+   /* Title styling */
+   .auth-title {
+     font-size: 24px;
+     font-weight: bold;
+     color: #1EB53A; /* Sierra Leone green color */
+     margin-bottom: 1em;
+   }
+   
+   /* Input styling */
+   .auth-input {
+     width: 100%;
+     padding: 10px;
+     margin: 10px 0;
+     border: 1px solid #ddd;
+     border-radius: 5px;
+   }
+   
+   /* Button styling */
+   .auth-button {
+     width: 100%;
+     padding: 12px;
+     margin-top: 10px;
+     background-color: #0072C6; /* Sierra Leone blue */
+     color: white;
+     border: none;
+     border-radius: 5px;
+     font-weight: bold;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+   }
+   
+   .auth-button:hover {
+     background-color: #005fa3;
+   }
+   
+   /* Link styling */
+   .auth-footer {
+     margin-top: 1em;
+     font-size: 14px;
+     color: #555;
+   }
+   
+   .auth-footer a {
+     color: #0072C6;
+     text-decoration: none;
+   }
+   
+   .auth-footer a:hover {
+     text-decoration: underline;
+   }
+   
+   
+   

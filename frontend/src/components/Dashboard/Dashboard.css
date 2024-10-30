@@ -1,0 +1,7 @@
+/* src/components/Dashboard/Dashboard.css */
+
+/* Custom styles for Dashboard component */
+.card {
+     @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+   }
+   
